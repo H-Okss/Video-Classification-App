@@ -18,7 +18,7 @@ uploaded_video = st.file_uploader("Choose video", type=["mp4","mov"])
 writer = None
 frame_skip = 10
 
-model = load_model('model_Loss_0.7431485056877136_Accuracy_0.7622950673103333.h5')
+model = load_model('model_Loss_0.6018450260162354_Accuracy_0.8550724387168884.h5')
 if uploaded_video is not None: # run only when user uploads video
     vid = uploaded_video.name
     with open(vid, mode='wb') as f:
