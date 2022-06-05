@@ -12,17 +12,7 @@ from collections import deque
 
 classes_list = ["Punch", "YoYo", "Swing", "HorseRace"]
 SEQUENCE_LENGTH = 20
-IMAGE_HEIGHT, IMAGE_WIDTH = 64,64
 model = load_model('model_Loss_0.15672941505908966_Accuracy_0.9637681245803833.h5')
-
-
-
-    # st.markdown(f"""
-    # ### Files
-    # - {vid}
-    # """,
-    # unsafe_allow_html=True) # display file name
-
 
 
 def predict_video(video_file_path, output_file_path, SEQUENCE_LENGTH):
@@ -48,8 +38,7 @@ def predict_video(video_file_path, output_file_path, SEQUENCE_LENGTH):
         if not ok:
             break
 
-        # resized_frame = cv2.resize(frame, (64, 64))
-        resized_frame = cv2.resize(frame, (original_video_width, original_video_height))    
+        resized_frame = cv2.resize(frame, (64, 64))
     
         normalized_frame = resized_frame / 255
 
@@ -93,7 +82,8 @@ def main():
     if st.button('Classifier la video'):    
         output_video_file_path = 'result.mp4'
         if uploaded_video is not None:
-            predict_video(uploaded_video.name, output_video_file_path, SEQUENCE_LENGTH)
+            rs = predict_video(uploaded_video.name, output_video_file_path, SEQUENCE_LENGTH)
+            st.success('La classe de la video est {}'.format(rs))
             st.header("The output video")
             st.video('result.mp4')
 
