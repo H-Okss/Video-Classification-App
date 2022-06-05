@@ -82,8 +82,6 @@ def main():
         if uploaded_video is not None:
             rs = predict_video(uploaded_video.name, output_video_file_path, SEQUENCE_LENGTH)
             st.success('La classe de la video est {}'.format(rs))
-            st.header("The output video")
-            st.video('result.mp4')
 
 if __name__ == '__main__':
     main()
