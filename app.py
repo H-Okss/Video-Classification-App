@@ -44,14 +44,10 @@ def predict_video(video_file_path, output_file_path, SEQUENCE_LENGTH):
 
         frames_queue.append(normalized_frame)
 
-        # predicted_labels_probabilities = model.predict(np.expand_dims(normalized_frame, axis = 0))[0]
-        # frames_queue.append(predicted_labels_probabilities)
-
         if len(frames_queue) == SEQUENCE_LENGTH:
             
 
             predicted_labels_probabilities = model.predict(np.expand_dims(frames_queue, axis = 0))[0]
-
 
             # Get the index of class with highest probability.
             predicted_label = np.argmax(predicted_labels_probabilities)
