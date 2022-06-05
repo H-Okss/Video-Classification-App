@@ -66,6 +66,8 @@ def predict_video(video_file_path, output_file_path, SEQUENCE_LENGTH):
 
     video_reader.release()
     video_writer.release()
+    return predicted_class_name
+
 
 def main():
     st.title("Video Classification")
